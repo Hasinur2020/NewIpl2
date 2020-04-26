@@ -23,12 +23,12 @@ function main() {
         let ans2 = extraRunIn2016(matches,deliveries);
         let ans3 = economicalBowler(matches,deliveries);
         let ans4 = matchPlayedInCity(matches);
-        saveMatchesPlayedPerYear(result,ans1,ans2,ans3,ans4);
+        saveAllData(result,ans1,ans2,ans3,ans4);
       });
     });
 }
 
-function saveMatchesPlayedPerYear(result,ans1,ans2,ans3,ans4) {
+function saveAllData(result,ans1,ans2,ans3,ans4) {
   const jsonData = {
     matchesPlayedPerYear: result,
     matchesWonPerYearEachTeam: ans1,
@@ -43,5 +43,7 @@ function saveMatchesPlayedPerYear(result,ans1,ans2,ans3,ans4) {
     }
   });
 }
+
+
 
 main();

@@ -1,21 +1,14 @@
 // This is for Year wise Economical rates It's Start Here
 //4th Visualization
-function getOption() { 
-  selectElement = document.querySelector('.input'); 
-  year = selectElement.value;
-  userInput(year); 
-}
-function userInput(year) {
-  year = parseInt(year);
 
-  //Get your Data from data.json file
-  function fetchAndVisualizeData() {
-    fetch("./data.json")
-      .then(r => r.json())
-      .then(visualizeData);
-  }
-  
-  fetchAndVisualizeData();
+function getOption() {
+  selectElement = document.querySelector('.input');
+  year = selectElement.value;
+  console.log(year);
+  fetch(`/economical-bowler?season=${year}`)
+  .then(op => op.json())
+  .then(visualizeData);
+
   
   //Visualize Accessed Data
   function visualizeData(data) {
@@ -23,14 +16,17 @@ function userInput(year) {
     return;
   }
 
-  function visualizeEconomicalBowler(economicalBowler) {
-    mainData = economicalBowler[year];
 
+  function visualizeEconomicalBowler(economicalBowler) {
+    //mainData = economicalBowler[year];
+    console.log(economicalBowler);
     let seriesData = [];
-    for (let economy in mainData) {
-      seriesData.push([economy, mainData[economy]]);
-    }
     
+    for (let economy in economicalBowler) {
+      seriesData.push([economy, economicalBowler[economy]]);
+    }
+    console.log(seriesData);
+
     Highcharts.chart("economical-bowler", {
       chart: {
         type: "column"
@@ -83,7 +79,105 @@ function userInput(year) {
       ]
     });
   }
-}
+
+
+};
+
+
+
+
+
+
+
+/// Below it is older.......
+// function getOption() { 
+//   selectElement = document.querySelector('.input'); 
+//   year = selectElement.value;
+//   console.log(year);
+//   userInput(year); 
+// }
+
+// function userInput(year) {
+//   year = parseInt(year);
+
+//   //Get your Data from data.json file
+//   function fetchAndVisualizeData() {
+//     fetch("./data.json")
+//       .then(r => r.json())
+//       .then(visualizeData);
+//   }
+  
+//   fetchAndVisualizeData();
+  
+//   //Visualize Accessed Data
+//   function visualizeData(data) {
+//     visualizeEconomicalBowler(data.economicalBowler);
+//     return;
+//   }
+
+//   function visualizeEconomicalBowler(economicalBowler) {
+//     mainData = economicalBowler[year];
+//     console.log(mainData);
+
+//     let seriesData = [];
+//     for (let economy in mainData) {
+//       seriesData.push([economy, mainData[economy]]);
+//     }
+//     console.log(seriesData);
+
+//     Highcharts.chart("economical-bowler", {
+//       chart: {
+//         type: "column"
+//       },
+//       title: {
+//         text: "4. Top Economical Bowlers In " + year
+//       },
+//       subtitle: {
+//         text:
+//           'Source: <a href="https://www.kaggle.com/nowke9/ipldata/data">IPL Dataset</a>'
+//       },
+//       xAxis: {
+//         type: "category",
+//         title: {
+//           text: "Bowlers"
+//         }
+//       },
+//       yAxis: {
+//         min: 0,
+//         title: {
+//           text: "Economy"
+//         }
+//       },
+//       tooltip: {
+//         headerFormat: '<span style="font-size:13px"><b>{point.key}</b></span><table>',
+//         pointFormat:
+//           '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+//           '<td style="padding:0"><b>{point.y:.2f} </b></td></tr>',
+//         footerFormat: "</table>",
+//         shared: true,
+//         useHTML: true
+//       },
+//       series: [
+//         {
+//           name: "Economy",
+//           data: seriesData,
+//           dataLabels: {
+//             enabled: !0,
+//             rotation: 0,
+//             color: '#FFFFFF',
+//             align: 'center',
+//             format: '{point.y:.2f}',
+//             y: 25,
+//             style: {
+//               fontSize: '13px',
+//               fontFamily: 'Verdana, sans-serif'
+//             }
+//           }
+//         }
+//       ]
+//     });
+//   }
+// }
 // It's ends here
 
 

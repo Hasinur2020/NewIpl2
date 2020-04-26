@@ -1,20 +1,20 @@
-function economicalBowlersIn2015(matches,deliveries) {
+function economicalBowlers(matches,deliveries,requireYear) {
     const result = [];
     const top10Economy = [];
     let bowlerRun = {};
     let bowlerBall = {};
     // It's for calculate the economy rates
-    for (match of matches) {
+    for (let match of matches) {
         let year = match.season;
         let id = match.id;
         
-        for (delivery of deliveries) {
+        for (let delivery of deliveries) {
             let match_id = delivery.match_id;
             let total_runs = (parseInt(delivery.total_runs) - (parseInt(delivery.bye_runs) + parseInt(delivery.legbye_runs) + parseInt(delivery.penalty_runs)));
             let bowler = delivery.bowler;
             let wide_runs = parseInt(delivery.wide_runs);
             let noball_runs = parseInt(delivery.noball_runs);
-            if ((id === match_id) && (year === '2015')) {
+            if ((id === match_id) && (year === requireYear)) {
                 if (bowlerRun[bowler]) {
                     bowlerRun[bowler] += total_runs;
                 } else {
@@ -55,4 +55,4 @@ function economicalBowlersIn2015(matches,deliveries) {
     return modifiedData;
 }
 
-module.exports = economicalBowlersIn2015;
+module.exports = economicalBowlers;
