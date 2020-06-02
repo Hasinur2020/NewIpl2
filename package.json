@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "ipl": "node index.js",
-    "start": "server.js"
+    "ipl": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +13,6 @@
   "dependencies": {
     "csvtojson": "^2.0.10",
     "express": "^4.17.1",
-    "http-server": "^0.12.1",
-    "node-fetch": "^2.6.0"
+    "http-server": "^0.12.1"
   }
 }

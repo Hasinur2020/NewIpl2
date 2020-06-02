@@ -6,6 +6,7 @@ const economicalBowlers=require("./ipl/economicalBowlers");
 const MATCHES_FILE_PATH = "./csv_data/matches.csv";
 const DELIVERIES_FILE_PATH = "./csv_data/deliveries.csv";
 
+let PORT = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/public'));
 
@@ -36,6 +37,6 @@ app.get('/economical-bowler', function(req,res) {
 });
 
 
-app.listen(3000, ()=>{
+app.listen(PORT, ()=>{
     console.log("server started")
 });
