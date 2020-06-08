@@ -7,7 +7,8 @@ function getOption() {
   console.log(year);
   fetch(`/economical-bowler?season=${year}`)
   .then(op => op.json())
-  .then(visualizeData);
+  .then(visualizeData)
+  .catch((err) => console.log(err));
 
   
   //Visualize Accessed Data
