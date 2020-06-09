@@ -20,13 +20,14 @@ function getOption() {
 
   function visualizeEconomicalBowler(economicalBowler) {
     //mainData = economicalBowler[year];
-    console.log(economicalBowler);
-    let seriesData = [];
+    // console.log(economicalBowler);
+    // let seriesData = [];
     
-    for (let economy in economicalBowler) {
-      seriesData.push([economy, economicalBowler[economy]]);
-    }
-    console.log(seriesData);
+    // for (let economy in economicalBowler) {
+    //   seriesData.push([economy, economicalBowler[economy]]);
+    // }
+    // console.log(seriesData);
+    console.log(economicalBowler);
 
     Highcharts.chart("economical-bowler", {
       chart: {
@@ -63,7 +64,7 @@ function getOption() {
       series: [
         {
           name: "Economy",
-          data: seriesData,
+          data: economicalBowler,
           dataLabels: {
             enabled: !0,
             rotation: 0,
